@@ -13,6 +13,6 @@ namespace ASP.Models
         public string Name { get; set; }
         [DisplayName("Преподователь")]
         public int? TeacherId { get; set; }
-        public Teacher Teacher { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }

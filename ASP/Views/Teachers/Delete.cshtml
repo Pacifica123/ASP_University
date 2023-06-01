@@ -1,0 +1,32 @@
+﻿@model ASP.Models.Teacher
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Отставка</h2>
+
+<h3>Этот преподаватель уходит в отставку?</h3>
+<div>
+    <h4>Преподаватель:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить из списка" class="btn btn-default" /> |
+            @Html.ActionLink("Отмена", "Index")
+        </div>
+    }
+</div>

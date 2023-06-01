@@ -1,0 +1,48 @@
+﻿@model ASP.Models.Homework
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Убрать задачу</h2>
+
+<h3>Эта задача выполнена и её можно степерь?</h3>
+<div>
+    <h4>Задача:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupStud.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupStud.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemLesson.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemLesson.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Выполнено" class="btn btn-default" /> |
+            @Html.ActionLink("Отмена", "Index")
+        </div>
+    }
+</div>

@@ -11,14 +11,14 @@ namespace ASP.Models
         public int Id { get; set; }
         [DisplayName("Группа")]
         public int? GroupStudId { get; set; }
-        public GroupStud GroupStud { get; set; }
+        public virtual GroupStud GroupStud { get; set; }
         [DisplayName("Предмет")]
         public int? ItemLessonId { get; set; }
-        public ItemLesson ItemLesson { get; set; }
+        public virtual ItemLesson ItemLesson { get; set; }
         [DisplayName("Аудитория")]
         public int? CabinetId { get; set; }
-        public Cabinet Cabinet { get; set; }
+        public virtual Cabinet Cabinet { get; set; }
         [DisplayName("Дата занятия")]
-        public DateTime date { get; set; }
+        public DateTime Date { get; set; }
     }
 }

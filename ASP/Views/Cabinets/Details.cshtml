@@ -1,0 +1,32 @@
+﻿@model ASP.Models.Cabinet
+
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Home Page";
+    var isAdmin = User.IsInRole("Admin");
+    var isStudent = User.IsInRole("Student");
+    var isTeacher = User.IsInRole("Teacher");
+
+}
+
+<h2>Подробнее о</h2>
+
+<div>
+    <h4>кабинете</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (isAdmin) { Html.ActionLink("Изменить информацию", "Edit", new { id = Model.Id }); } |
+    @Html.ActionLink("Назад к списку", "Index")
+</p>

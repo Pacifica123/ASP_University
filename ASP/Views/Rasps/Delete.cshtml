@@ -1,0 +1,56 @@
+﻿@model ASP.Models.Rasp
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Убрать пару</h2>
+
+<h3>Пары не будет?</h3>
+<div>
+    <h4>Информация о паре:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cabinet.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cabinet.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupStud.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupStud.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemLesson.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemLesson.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Отменить пару" class="btn btn-default" /> |
+            @Html.ActionLink("Отмена отмены", "Index")
+        </div>
+    }
+</div>

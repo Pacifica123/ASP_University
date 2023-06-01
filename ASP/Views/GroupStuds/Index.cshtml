@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ASP.Models.GroupStud>
+
+@{
+    ViewBag.Title = "Index";
+}
+@using Microsoft.AspNet.Identity
+
+@{
+    var isAdmin = User.IsInRole("Admin");
+    var isStudent = User.IsInRole("Student");
+    var isTeacher = User.IsInRole("Teacher");
+
+}
+<h2>Список групп</h2>
+@if (isAdmin)
+            {
+<p>
+    @Html.ActionLink("Создание новой", "Create")
+</p>
+            }
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @if (isAdmin) { Html.ActionLink("Изменить", "Edit", new { id = item.Id }); } |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.Id }) |
+                @if (isAdmin)
+                {
+                    Html.ActionLink("Расформировать", "Delete", new { id = item.Id });
+                }
+            </td>
+        </tr>
+    }
+
+</table>

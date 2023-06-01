@@ -1,0 +1,57 @@
+﻿@model ASP.Models.Rasp
+
+@{
+    ViewBag.Title = "Details";
+}
+@using Microsoft.AspNet.Identity
+
+@{
+    var isAdmin = User.IsInRole("Admin");
+    var isStudent = User.IsInRole("Student");
+    var isTeacher = User.IsInRole("Teacher");
+
+}
+<h2>Детали</h2>
+
+<div>
+    <h4>пары</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cabinet.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cabinet.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupStud.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupStud.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemLesson.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemLesson.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (isAdmin || isTeacher) { Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }); } |
+    @Html.ActionLink("К списку", "Index")
+</p>

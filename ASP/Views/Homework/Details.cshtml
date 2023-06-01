@@ -1,0 +1,49 @@
+﻿@model ASP.Models.Homework
+
+@{
+    ViewBag.Title = "Details";
+}
+@using Microsoft.AspNet.Identity
+
+@{
+    var isAdmin = User.IsInRole("Admin");
+    var isStudent = User.IsInRole("Student");
+    var isTeacher = User.IsInRole("Teacher");
+
+}
+<h2>Детали</h2>
+
+<div>
+    <h4>задачи</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GroupStud.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GroupStud.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemLesson.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemLesson.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (isTeacher || isAdmin) { Html.ActionLink("Изменить", "Edit", new { id = Model.Id }); } |
+    @Html.ActionLink("К списку", "Index")
+</p>

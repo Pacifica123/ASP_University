@@ -8,8 +8,8 @@ namespace ASP.Models
 {
     public class Teacher
     {
-        public int Id { get; set; }
+        public int Id { get; set; }  //ContextId пользователя
         [DisplayName("Фамилия Преподавателя")]
-        public string Name { get; set; }
+        public string Name { get; set; } //дублирование (for DeBug)
     }
 }

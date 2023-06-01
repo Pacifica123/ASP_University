@@ -151,10 +151,34 @@ namespace ASP.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, IsTeacher = model.IsTeacher, Name = model.Name };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    ApplicationDbContext db = new ApplicationDbContext();
+                    if (model.IsTeacher)
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, "Teacher");
+                        //var teacher = new Teacher { Id = user.Id };
+                        var teacher = new Teacher();
+                        teacher.Name = user.Name;
+                        
+                        db.Teachers.Add(teacher);
+                        db.SaveChanges();
+                        user.ContextId = teacher.Id; //связка таблиц юзера и его роли
+                        await UserManager.UpdateAsync(user);
+                    }
+                    else
+                    {
+                        await UserManager.AddToRoleAsync(user.Id, "Student");
+                        var student = new Student();
+                        student.Name = user.Name;
+                        db.Students.Add(student);
+                        db.SaveChanges();
+                        user.ContextId = student.Id; //связка таблиц юзера и его роли
+                        await UserManager.UpdateAsync(user);
+                    }
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // Дополнительные сведения о включении подтверждения учетной записи и сброса пароля см. на странице https://go.microsoft.com/fwlink/?LinkID=320771.

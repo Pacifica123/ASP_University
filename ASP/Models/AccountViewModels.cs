@@ -64,6 +64,7 @@ namespace ASP.Models
 
     public class RegisterViewModel
     {
+        #region AUTO
         [Required]
         [EmailAddress]
         [Display(Name = "Адрес электронной почты")]
@@ -79,6 +80,14 @@ namespace ASP.Models
         [Display(Name = "Подтверждение пароля")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
+        #endregion
+        //==============МОИ ПРАВКИ==============
+        //[Required]
+        [Display(Name = "Вы преподаватель?")]
+        public bool IsTeacher { get; set; }
+        [Required]
+        [Display(Name = "Ваше имя")]
+        public string Name { get; set; }
     }
 
     public class ResetPasswordViewModel

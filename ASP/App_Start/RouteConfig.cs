@@ -18,6 +18,12 @@ namespace ASP
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            //routes.MapRoute(
+            //    name: "EditStudent",
+            //    url: "student/edit/{id}",
+            //    defaults: new { controller = "Student", action = "Edit" }
+            //);
         }
     }
 }
