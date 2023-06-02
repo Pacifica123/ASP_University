@@ -39,11 +39,21 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @if (isTeacher || isAdmin) { Html.ActionLink("Редактировать", "Edit", new { id = item.Id }); } |
-                @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
-                @if (isTeacher || isAdmin) { Html.ActionLink("Убрать", "Delete", new { id = item.Id }); }
-            </td>
+
+            @if (isTeacher || isAdmin)
+            {
+                <td>
+                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Детали", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Убрать", "Delete", new { id = item.Id })
+                </td>
+            }
+            else
+            {
+                @Html.ActionLink("Детали", "Details", new { id = item.Id })
+            }
+
+
         </tr>
     }
 

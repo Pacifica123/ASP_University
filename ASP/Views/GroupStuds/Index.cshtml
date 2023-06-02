@@ -33,14 +33,20 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @if (isAdmin) { Html.ActionLink("Изменить", "Edit", new { id = item.Id }); } |
-                @Html.ActionLink("Подробнее", "Details", new { id = item.Id }) |
-                @if (isAdmin)
-                {
-                    Html.ActionLink("Расформировать", "Delete", new { id = item.Id });
-                }
-            </td>
+
+            @if (isAdmin)
+            {
+                <td>
+                    @Html.ActionLink("Изменить", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Подробнее", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Расформировать", "Delete", new { id = item.Id })
+                </td>
+            }
+            else
+            {
+                @Html.ActionLink("Подробнее", "Details", new { id = item.Id })
+            }
+
         </tr>
     }
 
